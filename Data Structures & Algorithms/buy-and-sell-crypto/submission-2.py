@@ -1,0 +1,23 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        l = 0 # buy
+        r = 1 # sell
+        maxP = 0
+
+        while r < len(prices):
+            # is it profitable?
+            if prices[l] < prices[r]:
+                profit = prices[r] - prices[l]
+                maxP = max(maxP, profit)
+            else: 
+                # we found a cheaper buy price
+                l = r
+            # move r to next day
+            r += 1
+        
+        return maxP
+
+        # time complexity: O(n)
+        # space complexity: O(1)
+
+        
